@@ -24,3 +24,7 @@ practicalmeteor:mocha
 
 kadira:flow-router
 kadira:blaze-layout
+aldeed:autoform
+aldeed:collection2
+twbs:bootstrap
+meteortoys:allthings

@@ -1,34 +1,12 @@
 <template name="home">
     <div class='container'>
         <header>
-            <h1>Pewpmo</h1>
-
-            <label class="highlight-suspects">
-                <input type="checkbox" />
-                Only Show Suspects ({{suspectCount}})
-            </label>
-
+            <h1>Poopmo</h1>
             {{> loginButtons}}
-
-            {{#if currentUser}}
-            <form class="new-food">
-                <input type="text" name="text" placeholder="Type to add more food" />
-            </form>
-            {{/if}}
         </header>
 
         <main>
             {{ > Template.dynamic template=main }}
         </main>
-    </div>
-</template>
-
-<template name='foodForm'>
-    <div class="form">
-        <ul>
-        {{#each foods}}
-            {{> food}}
-        {{/each}}
-        </ul>
     </div>
 </template>

@@ -1,0 +1,23 @@
+<template name='foodForm'>
+    {{#if currentUser}}
+        <form class="new-food">
+            <input type="text" name="text" placeholder="Type to add more food" />
+        </form>
+    {{/if}}
+    <div class="form">
+        <ul>
+            <li>
+                <span class="form-title">
+                    My Foods
+                </span>
+                <label class="highlight-avoiding">
+                    Avoid Only
+                    <input type="checkbox" />
+                </label>
+            </li>
+            {{#each foods}}
+                {{> food}}
+            {{/each}}
+        </ul>
+    </div>
+</template>

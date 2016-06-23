@@ -1,8 +1,41 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 
 export const Foods = new Mongo.Collection('foods');
+
+FoodSchema = new SimpleSchema({
+    text: {
+        type: String,
+        label: "Text"
+    },
+    owner: {
+        type: String,
+        label: "Owner",
+        autoValue: function() {
+            return this.userId
+        }
+    },
+    username: {
+        type: String,
+        label: "Username",
+        autoValue: function() {
+            Meteor.users.findOne(this.userId).username;
+        }
+    },
+    avoid: {
+        type: Boolean,
+        label: "Avoid",
+        optional: true,
+    },
+    createdAt: {
+        type: Date,
+        label: "Created At",
+    }
+});
+
+Foods.attachSchema(FoodSchema);
 
 if (Meteor.isServer) {
     // This code only runs on the server
@@ -43,21 +76,9 @@ Meteor.methods({
         }
         Foods.remove(foodId);
     },
-    'foods.setChecked'(foodId, setChecked) {
+    'foods.setAvoid'(foodId, setToAvoid) {
         check(foodId, String);
-        check(setChecked, Boolean);
-
-        const food = Foods.findOne(foodId);
-        if (food.private && task.owner !== this.userId) {
-            // If the task is private, make sure only the owner can check it off
-            throw new Meteor.Error('not-authorized');
-        }
-
-        Foods.update(foodId, { $set: { checked: setChecked } });
-    },
-    'foods.setPrivate'(foodId, setToPrivate) {
-        check(foodId, String);
-        check(setToPrivate, Boolean);
+        check(setToAvoid, Boolean);
 
         const food = Foods.findOne(foodId);
 
@@ -66,6 +87,6 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        Foods.update(foodId, { $set: { private: setToPrivate} });
+        Foods.update(foodId, { $set: { avoid: setToAvoid} });
     },
 });

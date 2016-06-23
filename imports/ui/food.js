@@ -12,14 +12,10 @@ Template.food.helpers({
 });
 
 Template.food.events({
-    'click .toggle-checked'() {
-        // Set the checked property to the opposite of its current value
-        Meteor.call('foods.setChecked', this._id, !this.checked);;
-    },
     'click .delete'() {
         Meteor.call('foods.remove', this._id);
     },
-    'click .toggle-private'() {
-        Meteor.call('foods.setPrivate', this._id, !this.private);
+    'click .toggle-avoid'() {
+        Meteor.call('foods.setAvoid', this._id, !this.avoid);
     },
 });
