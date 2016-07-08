@@ -1,12 +1,16 @@
 <template name="mealForm">
     <div class="meal-form-container">
+      {{#if currentUser}}
         <form class="new-food">
             <input type="text" name="text" placeholder="Breakfast, Lunch, or Dinner?" />
-            <div class="btn-group-vertical" role="group" aria-label="...">
-              <button type="button" class="btn btn-default">White Bread</button>
-              <button type="button" class="btn btn-default">Tomatoes</button>
-              <button type="button" class="btn btn-default">Faye</button>
-            </div>
         </form>
+      {{/if}}
+      <div class="form">
+        <ul>
+            {{#each myFoods}}
+                {{> food}}
+            {{/each}}
+        </ul>
+      </div>
     </div>
 </template>

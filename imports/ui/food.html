@@ -4,13 +4,10 @@
 
         <div class="btn-group">
         {{#if isOwner}}
-            <button type="button" class="btn toggle-avoid {{#if avoid}}btn-danger{{else}}btn-default{{/if}}">
-                {{#if avoid}}
-                    Avoiding
-                {{else}}
-                    Avoid
-                {{/if}}
+            {{#if isMealForm}}
+            <button type="button" class="btn toggle-eaten {{#if avoid}}btn-success{{else}}btn-default{{/if}}">
             </button>
+            {{/if}}
         {{/if}}
         </div>
 
