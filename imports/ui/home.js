@@ -30,7 +30,7 @@ Template.home.events({
         const target = event.target;
         const text = target.text.value;
 
-        // Insert a task into the collection
+        // Insert a food into the collection
         Meteor.call('foods.insert', text);
 
         // Clear form

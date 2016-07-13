@@ -6,7 +6,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 export const Meals = new Mongo.Collection('meals');
 
 MealSchema = new SimpleSchema({
-    name: {
+    mealType: {
         type: String,
         label: "Meal",
     },
@@ -20,6 +20,13 @@ MealSchema = new SimpleSchema({
         autoValue: function() {
             return this.userId;
         },
+    },
+    username: {
+        type: String,
+        label: "Username",
+        autoValue: function() {
+            Meteor.users.findOne(this.userId).username;
+        }
     },
     createdAt: {
         type: Date,
@@ -47,19 +54,28 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    'meals.insert'(text, foods) {
-        check(text, String);
+    'meals.insert'(mealType, foods) {
+        check(mealType, String);
+        check(foods, Array);
 
         // Make sure the user is logged in before inserting a food
         if (! this.userId) {
             throw new Meteor.Error('not-authorized');
         }
 
-        Foods.insert({
-            text,
-            createdAt: new Date(),
+        if (foods.length === 0) {
+            throw new Meteor.Error('You must check off at least one food!');
+        }
+
+        const meal = {
+            mealType: mealType,
+            foods: foods,
             owner: this.userId,
             username: Meteor.users.findOne(this.userId).username,
-        });
+            createdAt: new Date(),
+        };
+
+        console.log("Inserting meal:", meal);
+        Meals.insert(meal);
     },
 });

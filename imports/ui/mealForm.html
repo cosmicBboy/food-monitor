@@ -1,16 +1,39 @@
 <template name="mealForm">
     <div class="meal-form-container">
-      {{#if currentUser}}
-        <form class="new-food">
-            <input type="text" name="text" placeholder="Breakfast, Lunch, or Dinner?" />
-        </form>
-      {{/if}}
       <div class="form">
         <ul>
-            {{#each myFoods}}
-                {{> food}}
-            {{/each}}
+          {{#if currentUser}}
+          <li class="meal-submit text-center">
+            <button class="btn submit-new-meal">Submit Meal</button>
+          </li>
+          <!-- Input meal type -->
+          <li class="meal-type">
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <div class="btn-group" role="group">
+                <button class="btn meal-type-input" id="breakfast">Breakfast</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn meal-type-input" id="lunch">Lunch</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn meal-type-input" id="dinner">Dinner</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn meal-type-input" id="snack">Snack</button>
+              </div>
+            </div>
+          </li>
+          {{/if}}
+          {{#each myFoods}}
+            {{> food}}
+          {{/each}}
         </ul>
       </div>
     </div>
+    {{#if currentUser}}
+      <form class="new-food">
+        <input type="text" name="text" placeholder="Type to add more food"
+         autocomplete="off"/>
+      </form>
+    {{/if}}
 </template>

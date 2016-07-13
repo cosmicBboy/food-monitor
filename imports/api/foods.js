@@ -24,11 +24,6 @@ FoodSchema = new SimpleSchema({
             Meteor.users.findOne(this.userId).username;
         }
     },
-    avoid: {
-        type: Boolean,
-        label: "Avoid",
-        optional: true,
-    },
     createdAt: {
         type: Date,
         label: "Created At",

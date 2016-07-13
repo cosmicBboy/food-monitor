@@ -1,16 +1,19 @@
 <template name="food">
-    <li class="{{#if private}}private{{/if}}">
-        <button class="delete">&times;</button>
-
-        <div class="btn-group">
+    <li class="food-item {{#if isEaten}}food-is-eaten{{/if}}">
         {{#if isOwner}}
             {{#if isMealForm}}
-            <button type="button" class="btn toggle-eaten {{#if avoid}}btn-success{{else}}btn-default{{/if}}">
+            <button type="button" class="btn btn-default pull-left toggle-eaten">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
             {{/if}}
         {{/if}}
-        </div>
 
         <span class="text">{{text}}</span>
+
+        {{#if isFoodForm}}
+            <button type="button" class="btn btn-default delete pull-right">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+        {{/if}}
     </li>
 </template>
