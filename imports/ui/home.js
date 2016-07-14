@@ -12,6 +12,8 @@ import './food.html';
 import './food.js';
 import './mealForm.html';
 import './mealForm.js';
+import './mealList.html';
+import './mealList.js';
 
 Template.home.onCreated(function bodyOnCreated() {
     Meteor.subscribe('foods');

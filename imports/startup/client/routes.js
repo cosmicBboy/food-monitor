@@ -6,6 +6,7 @@ import '../../ui/about.html';
 import '../../ui/foodForm.html';
 import '../../ui/mealForm.html';
 import '../../ui/meals.html';
+import '../../ui/mealList.html';
 
 FlowRouter.route('/', {
     name: 'home',
@@ -18,6 +19,13 @@ FlowRouter.route('/meals', {
     name: 'meals',
     action() {
         BlazeLayout.render('home', { main: 'meals' });
+    }
+});
+
+FlowRouter.route('/my-meals', {
+    name: 'my-meals',
+    action() {
+        BlazeLayout.render('home', { main: 'mealList' });
     }
 });
 

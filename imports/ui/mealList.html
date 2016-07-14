@@ -1,0 +1,14 @@
+<template name="mealList">
+  <div class="meal-list-container">
+    <h1>My meals</h1>
+    <ul>
+      {{#each myMeals}}
+        <li>
+          <div>{{mealType}}</div>
+          <div>{{createdAt}}</div>
+          {{foodItems}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
