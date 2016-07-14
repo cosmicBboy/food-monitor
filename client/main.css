@@ -21,8 +21,14 @@ body {
   padding: 0;
   max-width: 600px;
   margin: 0 auto;
-  min-height: 100%;
+  /*min-height: 100%;*/
+  height: calc(100% - 70px);
   background: white;
+}
+
+#__blaze-root {
+  height: 100%;
+  /*height: calc(100% - 70px);*/
 }
 
 .display {
@@ -66,6 +72,7 @@ form input {
 
 form.new-food {
   /*styling for mobile*/
+  height: 70px;
   position: fixed;
   bottom: 0;
   max-width: 600px;
@@ -138,6 +145,7 @@ ul span {
 
 .meal-form-container button,
 .food-form-container button {
+  padding: 0;
   border-radius: 50px;
   background-color: transparent;
   border: none;
@@ -153,17 +161,23 @@ ul span {
   background-color: #d3fff5;
 }
 
-.meal-form-container .food-is-eaten button:hover,
-.food-form-container .food-is-eaten button:hover {
-  background-color: #94e0ce;
+.meal-form-container .food-item button:hover,
+.food-form-container .food-item button:hover,
+.meal-form-container .food-item button:active,
+.food-form-container .food-item button:active {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  transition: none;
 }
 
 .food-item {
-  height: 80px;
+  height: 50px;
 }
 
-.food-item .text {
-  line-height: 55px;
+.food-item button span {
+  padding: 0;
 }
 
 .meal-submit {

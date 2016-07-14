@@ -26,14 +26,16 @@ Template.mealForm.events({
     // only call meals.insert if foods Array contains objects
     if (foods.length === 0) {
       console.log('You must check off at least one food!');
+    } else if (!mealType) {
+      console.log('You must select a meal type!');
     } else {
       Meteor.call('meals.insert', mealType, foods);
-    }
-    // reset the form
-    Session.set('foodsEaten', []);
-    instance.$('.meal-type-input').each(function(index) {
+      // reset the form
+      Session.set('foodsEaten', []);
+      instance.$('.meal-type-input').each(function(index) {
       $(this).removeClass('active');
     });
+    }
   },
   'click .meal-type-input'(event, instance) {
     event.preventDefault();
