@@ -4,7 +4,8 @@ import { Template } from 'meteor/templating';
 import { Meals } from '../api/meals.js';
 import { Foods } from '../api/foods.js';
 
-import './mealList.html';
+import './meal.html';
+import './meal.js';
 
 Template.mealList.onCreated(function bodyOnCreated() {
   console.log('meal list created');
@@ -20,7 +21,4 @@ Template.mealList.helpers({
     });
     return myMeals;
   },
-  myFoods() {
-    return Foods.find({});
-  }
 });

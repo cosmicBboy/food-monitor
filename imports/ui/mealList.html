@@ -1,13 +1,11 @@
 <template name="mealList">
   <div class="meal-list-container">
-    <h1>My meals</h1>
     <ul>
+      <li>
+        <span class="form-title">My Meals</span>
+      </li>
       {{#each myMeals}}
-        <li>
-          <div>{{mealType}}</div>
-          <div>{{createdAt}}</div>
-          {{foodItems}}
-        </li>
+        {{> meal}}
       {{/each}}
     </ul>
   </div>

@@ -199,6 +199,24 @@ li.meal-type {
   background-color: #b8e2d8;
 }
 
+.meal .meal-type {
+  font-weight: bold;
+}
+
+.meal .meal-date {
+  color: #888888;
+  font-size: 12px;
+}
+
+.meal .meal-items {
+  margin-top: 5px;
+}
+
+.meal .label-meal {
+  background-color: #38927c;
+  font-size: 14px;
+}
+
 button.submit-new-meal {
   background-color: #25caa4;
   height: 50px;
