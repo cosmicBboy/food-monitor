@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Foods } from '../api/foods.js';
 import { Meals } from '../api/foods.js';
@@ -38,4 +39,24 @@ Template.home.events({
         // Clear form
         target.text.value = '';
     },
+    'click .my-food'(event) {
+        event.preventDefault();
+        console.log("Go to my food");
+        FlowRouter.go('/');
+    },
+    'click .my-meals'(event) {
+        event.preventDefault();
+        console.log("Go to my meals");
+        FlowRouter.go('/my-meals');
+    },
+    'click .add-meal'(event) {
+        event.preventDefault();
+        console.log("Go to add meals");
+        FlowRouter.go('/meals');
+    },
+    'click .about-btn'(event) {
+        event.preventDefault();
+        console.log("Go to about");
+        FlowRouter.go('/about');
+    }
 });

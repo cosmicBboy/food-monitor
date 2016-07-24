@@ -3,10 +3,29 @@
         <header>
             <h1>Poopmo</h1>
             {{> loginButtons}}
+            <span class="about-btn glyphicon glyphicon-info-sign" aria-hidden="true"></span>
         </header>
 
         <main>
-            {{ > Template.dynamic template=main }}
+          {{ > Template.dynamic template=main }}
+          <!-- navbar -->
+          <div class="nav-bar btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+              <button class="btn btn-lg first-btn my-food">
+                <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button class="btn btn-lg my-meals">
+                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button class="btn btn-lg add-meal">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
         </main>
     </div>
 </template>

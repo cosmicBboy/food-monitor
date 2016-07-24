@@ -42,8 +42,55 @@ header {
   position: relative;
 }
 
+main {
+  height: inherit;
+}
+
 #login-buttons {
   display: block;
+}
+
+.about-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 25px;
+  color: #65858e;
+}
+
+.about-page h2 {
+  font-weight: bold;
+}
+
+.about-page p {
+  font-size: 16px;
+}
+
+div.nav-bar {
+  height: 70px;
+  width: 100%;
+  max-width: 600px;
+  position: absolute;
+  bottom: 0;
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #e1e5f0, #d0edf5, 100%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+div.nav-bar .btn-group .btn-lg {
+  padding: 0;
+  height: 100%;
+  border-radius: 0;
+  background-color: transparent;
+  border-left: 1px solid #95beca;
+}
+
+div.nav-bar .btn-group .btn-lg:focus {
+  outline:0;
+}
+
+div.nav-bar .btn-group .btn-lg.first-btn {
+  border-left: none;
 }
 
 h1 {
@@ -73,8 +120,8 @@ form input {
 form.new-food {
   /*styling for mobile*/
   height: 70px;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: 70px;
   max-width: 600px;
   width: 100%;
 }
@@ -141,6 +188,19 @@ ul span {
   float: right;
   margin-right: 5px;
   font-weight: normal;
+}
+
+.meal-list-container {
+  height: 100%;
+  overflow-y: scroll;
+  padding-bottom: 50px;
+}
+
+.meal-form-container,
+.food-form-container {
+  height: calc(100% - 70px);
+  padding-bottom: 20px;
+  overflow-y: scroll;
 }
 
 .meal-form-container button,

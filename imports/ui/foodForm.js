@@ -7,7 +7,7 @@ import { Foods } from '../api/foods.js';
 import './foodForm.html'
 
 Template.foodForm.onCreated(function bodyOnCreated() {
-    this.state = new ReactiveDict('foodDict');
+    this.state = new ReactiveDict();
     Meteor.subscribe('foods');
 });
 
