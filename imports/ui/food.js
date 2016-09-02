@@ -9,20 +9,6 @@ Template.food.helpers({
   isOwner() {
     return this.owner === Meteor.userId();
   },
-  isMealForm() {
-    if (Template.parentData(2).viewName === 'Template.meals') {
-      return true;
-    } else {
-      return false;
-    }
-  },
-  isFoodForm() {
-    if (Template.parentData(2).viewName === 'Template.foodForm') {
-      return true;
-    } else {
-      return false;
-    }
-  },
   isEaten() {
     // This function should return true if the food template
     // id is in the foodsEaten reactive dictionary
