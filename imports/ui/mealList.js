@@ -9,6 +9,9 @@ import './meal.js';
 
 Template.mealList.onCreated(function bodyOnCreated() {
   console.log('meal list created');
+  Meteor.subscribe("meals");
+  Session.set("foodsEaten", []);
+  Session.set("foodEditing", null);
 });
 
 Template.mealList.helpers({
@@ -16,8 +19,7 @@ Template.mealList.helpers({
     const myMeals = Meals.find({owner: Meteor.userId()}).fetch();
     var projection = {fields: {text: 1}};
     _.each(myMeals, function(doc) {
-      let foods = Foods.find({_id: {$in: doc.foods}}, projection).fetch();
-      doc.foodItems = _.pluck(foods, 'text');
+      doc.foodItems = Foods.find({_id: {$in: doc.foods}}, projection).fetch();
     });
     return myMeals;
   },

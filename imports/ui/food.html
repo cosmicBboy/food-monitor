@@ -1,14 +1,23 @@
 <template name="food">
-    <li class="food-item {{#if isEaten}}food-is-eaten{{/if}}">
-        {{#if isOwner}}
-            <button type="button" class="btn btn-default pull-left toggle-eaten">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            </button>
-        {{/if}}
+  {{#HammerTouchArea gestureMap=foodGestures}}
 
-        <span class="text">{{text}}</span>
-        <button type="button" class="btn btn-default delete pull-right">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-    </li>
+  <button type="button" class="btn btn-default food-item
+    {{#if isEaten}}food-is-eaten{{/if}} toggle-eaten">
+
+    {{#if isEditing}}
+      {{> foodEdit}}
+    {{else}}
+      {{text}}
+    {{/if}}
+
+  </button>
+
+  {{/HammerTouchArea}}
+</template>
+
+<template name="foodEdit">
+  <form class="edit-food">
+      <input class="edit-food-input" type="text" name="text" value="{{text}}"
+       autocomplete="off"/>
+    </form>
 </template>

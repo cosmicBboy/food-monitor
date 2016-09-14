@@ -22,5 +22,5 @@ Template.meal.helpers({
     let m = this.mealType;
     // capitalizing the meal type
     return m.charAt(0).toUpperCase() + m.slice(1);
-  }
+  },
 })

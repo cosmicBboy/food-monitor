@@ -126,6 +126,16 @@ form.new-food {
   width: 100%;
 }
 
+form.edit-food {
+  padding: 0;
+}
+
+form.edit-food input {
+  width: auto;
+  padding: 0;
+  padding-left: 5px;
+}
+
 form input:focus{
   outline: 0;
 }
@@ -205,10 +215,7 @@ ul span {
 
 .meal-form-container button,
 .food-form-container button {
-  padding: 0;
-  border-radius: 50px;
   background-color: transparent;
-  border: none;
   outline: 0 !important;
 }
 
@@ -217,8 +224,13 @@ ul span {
   background-color: transparent;
 }
 
-.food-is-eaten {
-  background-color: #d3fff5;
+button.food-is-eaten {
+  background-color: #d3fff5 !important;
+  border-color: #d3fff5;
+}
+
+button.food-is-eaten:focus {
+  border-color: #d3fff5;
 }
 
 .meal-form-container .food-item button:hover,
@@ -232,8 +244,25 @@ ul span {
   transition: none;
 }
 
-.food-item {
+.food-container {
+  padding: 20px;
+}
+
+.food-container .hammer-touch-area {
+  float: left;
+}
+
+.meal .food-container {
   height: 50px;
+}
+
+.food-item {
+  font-size: 1.1em;
+  margin: 0 5px 10px 5px;
+}
+
+.food-item:hover {
+  cursor: pointer;
 }
 
 .food-item button span {
@@ -248,7 +277,12 @@ li.meal-type {
   padding: 0;
 }
 
+.meal-type .btn-group .btn-group:not(:first-child) {
+    border-left: #dddddd solid 1px;
+}
+
 .meal-type button {
+  font-size: 1.1em;
   height: 50px;
   border-radius: 0;
 }

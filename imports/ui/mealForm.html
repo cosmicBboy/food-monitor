@@ -25,9 +25,14 @@
             </div>
           </li>
           {{/if}}
-          {{#each myFoods}}
-            {{> food}}
-          {{/each}}
+          <div class="food-container">
+            {{#each myFoodChunks}}
+              <!-- each food chunk contains 4 food items -->
+              {{#each .}}
+                {{> food}}
+              {{/each}}
+            {{/each}}
+          </div>
         </ul>
       </div>
     </div>

@@ -71,6 +71,17 @@ Meteor.methods({
         }
         Foods.remove(foodId);
     },
+    'foods.edit'(foodId, text) {
+        check([foodId, text], [String]);
+
+        const food = Foods.findOne(foodId);
+        if (food.private && food.owner !== this.userId) {
+            // If the task is private, make sure only the owner can edit it
+            throw new Meteor.Error('not-authorized');
+        }
+        console.log("Server: updating",  foodId);
+        Foods.update({_id: foodId}, {$set: {text: text}})
+    },
     'foods.setAvoid'(foodId, setToAvoid) {
         check(foodId, String);
         check(setToAvoid, Boolean);

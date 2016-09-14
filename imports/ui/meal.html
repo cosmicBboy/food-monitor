@@ -2,10 +2,10 @@
   <li class='meal'>
     <div class="meal-type">{{mealType}}</div>
     <div class="meal-date">{{createDate}}</div>
-    <div class="meal-items">
-    {{#each foodItems}}
-      <span class="label label-meal">{{this}}</span>
-    {{/each}}
+    <div class="food-container">
+      {{#each foodItems}}
+        {{> food}}
+      {{/each}}
     </div>
   </li>
 </template>
