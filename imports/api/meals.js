@@ -78,4 +78,27 @@ Meteor.methods({
         console.log("Inserting meal:", meal);
         Meals.insert(meal);
     },
+    'meals.update'(mealId, foodBasket) {
+        check(mealId, String);
+        check(foodBasket, Array);
+
+        console.log(mealId);
+        console.log(foodBasket);
+
+        // Make sure the user is logged in before inserting a food
+        if (! this.userId) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        if (foodBasket.length === 0) {
+            throw new Meteor.Error('The foodBasket can\'t be empty!');
+        }
+
+        console.log("Updating meal:", foodBasket);
+        Meals.update(mealId, {
+            $push: { foods: { $each: foodBasket } },
+        });
+        console.log(Meals.find({_id: mealId}).fetch());
+
+    },
 });

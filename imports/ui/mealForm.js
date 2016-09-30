@@ -21,7 +21,7 @@ Template.mealForm.helpers({
     let foodChunks = _.chain(foods).groupBy(function(element, index){
       return Math.floor(index/n);
     }).toArray().value();
-    console.log(foodChunks);
+    console.log("Food chunks", foodChunks);
     return foodChunks;
   },
   myFoods(foodChunk) {

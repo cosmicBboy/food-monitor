@@ -1,11 +1,33 @@
 <template name="meal">
-  <li class='meal'>
+  <li class='meal poopmo-panel'>
     <div class="meal-type">{{mealType}}</div>
     <div class="meal-date">{{createDate}}</div>
     <div class="food-container">
       {{#each foodItems}}
         {{> food}}
       {{/each}}
+
+      {{#if isEditable}}
+        {{#if isEditing}}
+            <button class="btn btn-default save-button modify-button">Save
+            </button>
+            <button class="btn btn-default cancel-button modify-button">Cancel
+          </button>
+          {{else}}
+            <button class="btn btn-default edit-button modify-button">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </button>
+        {{/if}}
+      {{/if}}
     </div>
+
+    <div class="food-container">
+      {{#if addingFood}}
+        {{#each myFoods}}
+          {{> food}}
+        {{/each}}
+      {{/if}}
+    </div>
+
   </li>
 </template>

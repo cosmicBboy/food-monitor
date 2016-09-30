@@ -1,18 +1,32 @@
 <template name="food">
-  {{#HammerTouchArea gestureMap=foodGestures}}
 
-  <button type="button" class="btn btn-default food-item
-    {{#if isEaten}}food-is-eaten{{/if}} toggle-eaten">
+  {{#if isNotEditable}}
 
-    {{#if isEditing}}
-      {{> foodEdit}}
+    <button type="button" class="btn btn-default food-item not-editable">
+        {{text}}
+        {{#if inBasket}}
+          FOO
+        {{/if}}
+    </button>
+
     {{else}}
-      {{text}}
-    {{/if}}
 
-  </button>
+      {{#HammerTouchArea gestureMap=foodGestures}}
 
-  {{/HammerTouchArea}}
+      <button type="button" class="btn btn-default food-item
+        {{#if isEaten}}food-is-eaten{{/if}} toggle-eaten">
+
+        {{#if isEditing}}
+          {{> foodEdit}}
+        {{else}}
+          {{text}}
+        {{/if}}
+
+      </button>
+
+      {{/HammerTouchArea}}
+
+  {{/if}}
 </template>
 
 <template name="foodEdit">

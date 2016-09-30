@@ -188,6 +188,13 @@ ul span {
   padding: 15px;
 }
 
+.dropdown-menu {
+  /*left: -40px;*/
+  min-width: 140px;
+  max-height: 200px;
+  overflow: scroll;
+}
+
 .form-title {
   font-size: 18px;
   font-weight: bold;
@@ -225,18 +232,19 @@ ul span {
 }
 
 button.food-is-eaten {
-  background-color: #d3fff5 !important;
-  border-color: #d3fff5;
+  background-color: #e3eff2 !important;
+  border-color: #e3eff2;
 }
 
 button.food-is-eaten:focus {
-  border-color: #d3fff5;
+  border-color: #e3eff2;
 }
 
 .meal-form-container .food-item button:hover,
 .food-form-container .food-item button:hover,
 .meal-form-container .food-item button:active,
-.food-form-container .food-item button:active {
+.food-form-container .food-item button:active,
+.food-item.not-editable:active {
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -245,15 +253,11 @@ button.food-is-eaten:focus {
 }
 
 .food-container {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 
 .food-container .hammer-touch-area {
-  float: left;
-}
-
-.meal .food-container {
-  height: 50px;
+  display: inline;
 }
 
 .food-item {
@@ -261,8 +265,17 @@ button.food-is-eaten:focus {
   margin: 0 5px 10px 5px;
 }
 
-.food-item:hover {
-  cursor: pointer;
+.meal-list-container .food-item.not-editable,
+.meal-list-container .food-item.not-editable:hover,
+.meal-list-container .food-item.not-editable:active {
+  cursor: default;
+  background-color: #e3eff2;
+  border-color: #e3eff2;
+  outline: 0;
+}
+
+.food-item.not-editable:focus {
+  outline:0;
 }
 
 .food-item button span {
@@ -311,6 +324,10 @@ li.meal-type {
   font-size: 14px;
 }
 
+.meal. meal-footer {
+  padding: 10px;
+}
+
 button.submit-new-meal {
   background-color: #25caa4;
   height: 50px;
@@ -320,6 +337,24 @@ button.submit-new-meal {
 
 button.submit-new-meal:focus {
   background-color: #25caa4;
+}
+
+.meal-list-container .meal .modify-button,
+.btn-group .modify-button {
+  margin: 0 5px 10px 5px;
+  border-radius: 70px;
+}
+
+.meal-list-container .meal .modify-button span {
+  padding: 0;
+}
+
+.meal-list-container .meal .modify-button:focus,
+.meal-list-container .meal .modify-button:active,
+.meal-list-container .meal .modify-button:hover {
+  background-color: #b2f7e7;
+  border-color: #a2d8cc;
+  outline: 0;
 }
 
 @media (max-width: 600px) {

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Foods } from '../api/foods.js';
 
@@ -35,11 +36,17 @@ Template.food.helpers({
       return false;
     }
   },
+  isNotEditable() {
+    return !Template.currentData().inBasket && FlowRouter.getRouteName() === "my-meals";
+  },
+  inBasket() {
+    return Template.currentData().inBasket;
+  },
   foodGestures: {
     'press .food-item' (event, instance) {
       Session.set('foodEditing', instance.data._id)
     },
-  },
+  }
 });
 
 Template.food.events({
