@@ -39,8 +39,18 @@ Template.food.helpers({
   isNotEditable() {
     return !Template.currentData().inBasket && FlowRouter.getRouteName() === "my-meals";
   },
-  inBasket() {
-    return Template.currentData().inBasket;
+  inMeal() {
+    // console.log(Template.currentData());
+    return Template.currentData().inMeal;
+  },
+  editingMeal() {
+    const mealId = Template.currentData().mealId;
+    return Session.get("editingMeal") === mealId;
+  },
+  beingRemoved() {
+    const mealId = Template.currentData().mealId;
+    return (Session.get("editingMeal") === mealId &&
+            _.contains(Session.get("foodsRemoved"), this._id));
   },
   foodGestures: {
     'press .food-item' (event, instance) {
@@ -74,6 +84,24 @@ Template.food.events({
     }
     console.log("Eaten", eaten);
     Session.set('foodsEaten', eaten);
+  },
+  'click .remove-food'(event, instance) {
+    event.preventDefault();
+    let removed = Session.get('foodsRemoved');
+    const foodId = instance.data._id;
+
+    // Don't push any foodId into foodsEaten if currently editing
+    if (Session.equals('foodEditing', foodId)) {
+      console.log("Currently editing food item. Do anything with foodEaten");
+      return null;
+    }
+    if (!_.contains(removed, foodId)) {
+      removed.push(foodId);
+    } else {
+      removed = _.without(removed, foodId);
+    }
+    console.log("Removed", removed);
+    Session.set('foodsRemoved', removed);
   },
   'submit .edit-food'(event, instance) {
     event.preventDefault();

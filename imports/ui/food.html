@@ -2,10 +2,17 @@
 
   {{#if isNotEditable}}
 
-    <button type="button" class="btn btn-default food-item not-editable">
+    <button type="button" class="btn btn-default food-item remove-food
+     {{#if beingRemoved}}{{else}}in-basket{{/if}}">
         {{text}}
-        {{#if inBasket}}
-          FOO
+
+        {{#if inMeal}}
+          {{#if editingMeal}}
+            {{#if beingRemoved}}{{else}}
+              <span class="glyphicon glyphicon-minus glyph-button" aria-hidden="true"></span>
+            {{/if}}
+            {{else}}
+          {{/if}}
         {{/if}}
     </button>
 

@@ -25,10 +25,10 @@ createFoodStore = function(basket, mealFood) {
   // Args:
   //  basket:   takes a basket (FoodStore query result)
   //  mealFood: a list of food object ids
-  let store = _.filter(basket, function(o) {
+  const store = _.filter(basket, function(o) {
     return !_.contains(mealFood, o._id);
   });
-  _.map(store, function(o) { return o.inBasket = true; });
+  _.each(store, function(o) { return o.inBasket = true; });
   return store;
 }
 
@@ -48,7 +48,6 @@ Template.meal.helpers({
     return Template.currentData()._id === Session.get("editingMeal");
   },
   addingFood() {
-    console.log(Session.get("addingFood"));
     return Template.currentData()._id === Session.get("addingFood");
   },
   myFoods() {
@@ -68,12 +67,13 @@ Template.meal.events({
   'click .save-button'(event, instance) {
     event.preventDefault();
     const basket = Session.get("foodsEaten");
+    const foodsRemoved = Session.get("foodsRemoved");
     const mealId = Session.get("editingMeal");
 
     if (basket.length === 0) {
-      console.log("You must check off at least one food!");
+      console.log("No foods have been added");
     } else {
-      Meteor.call("meals.update", mealId, basket);
+      Meteor.call("meals.add", mealId, basket);
       // reset the form
       Session.set("foodsEaten", []);
       instance.$(".meal-type-input").each(function(index) {
@@ -81,12 +81,20 @@ Template.meal.events({
       });
     }
 
-    // Session.set("editingMeal", null);
-    // Session.set("addingFood", null);
-    // Session.set('foodsEaten', eaten);
-  },
-  'click .cancel-button'(event, instance) {
+    if (foodsRemoved.length === 0) {
+      console.log("No foods have been removed");
+    } else {
+      console.log("To Remove", foodsRemoved);
+      Meteor.call("meals.remove", mealId, foodsRemoved);
+      // reset the form
+      Session.set("foodsRemoved", []);
+      instance.$(".meal-type-input").each(function(index) {
+        $(this).removeClass("active");
+      });
+    }
+
     Session.set("editingMeal", null);
     Session.set("addingFood", null);
-  }
+
+  },
 });

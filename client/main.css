@@ -93,6 +93,13 @@ div.nav-bar .btn-group .btn-lg.first-btn {
   border-left: none;
 }
 
+span.glyph-button {
+  padding: 5px;
+  background-color: #cddcde;
+  border-radius: 10px;
+  font-size: 10px;
+}
+
 h1 {
   font-size: 1.5em;
   margin: 0;
@@ -244,7 +251,7 @@ button.food-is-eaten:focus {
 .food-form-container .food-item button:hover,
 .meal-form-container .food-item button:active,
 .food-form-container .food-item button:active,
-.food-item.not-editable:active {
+.food-item.in-basket:active {
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -265,16 +272,16 @@ button.food-is-eaten:focus {
   margin: 0 5px 10px 5px;
 }
 
-.meal-list-container .food-item.not-editable,
-.meal-list-container .food-item.not-editable:hover,
-.meal-list-container .food-item.not-editable:active {
+.meal-list-container .food-item.in-basket,
+.meal-list-container .food-item.in-basket:hover,
+.meal-list-container .food-item.in-basket:active {
   cursor: default;
   background-color: #e3eff2;
   border-color: #e3eff2;
   outline: 0;
 }
 
-.food-item.not-editable:focus {
+.food-item.in-basket:focus {
   outline:0;
 }
 

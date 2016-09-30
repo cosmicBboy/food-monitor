@@ -14,6 +14,7 @@ Template.mealList.onCreated(function bodyOnCreated() {
   Meteor.subscribe("meals");
   Meteor.subscribe("foods");
   Session.set("foodsEaten", []);
+  Session.set("foodsRemoved", []);
   Session.set("foodEditing", null);
 });
 
@@ -22,9 +23,11 @@ Template.mealList.helpers({
     const myMeals = Meals.find({owner: Meteor.userId()}).fetch();
     var projection = {fields: {text: 1}};
     _.each(myMeals, function(doc) {
+      const mealId = doc._id;
       doc.foodItems = Foods.find({_id: {$in: doc.foods}}, projection).fetch();
       _.each(doc.foodItems, function(fitem) {
         fitem.inMeal = true;
+        fitem.mealId = mealId;
       });
     });
     return myMeals;
