@@ -37,7 +37,8 @@ Template.food.helpers({
     }
   },
   isNotEditable() {
-    return !Template.currentData().inBasket && FlowRouter.getRouteName() === "my-meals";
+    return (!Template.currentData().inBasket && 
+            FlowRouter.getRouteName() === "my-meals");
   },
   inMeal() {
     // console.log(Template.currentData());

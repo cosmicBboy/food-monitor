@@ -22,7 +22,7 @@ Template.mealList.helpers({
   myMeals() {
     const myMeals = Meals.find({owner: Meteor.userId()}).fetch();
     var projection = {fields: {text: 1}};
-    _.each(myMeals, function(doc) {
+    _.each(myMeals, doc => {
       const mealId = doc._id;
       doc.foodItems = Foods.find({_id: {$in: doc.foods}}, projection).fetch();
       _.each(doc.foodItems, function(fitem) {

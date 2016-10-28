@@ -2,6 +2,7 @@
     <div class="meal-form-container">
       <div class="form">
         <ul>
+
           {{#if currentUser}}
           <!-- submit button -->
           <li class="meal-submit text-center">
@@ -25,6 +26,7 @@
             </div>
           </li>
           {{/if}}
+
           <div class="food-container">
             {{#each myFoodChunks}}
               <!-- each food chunk contains 4 food items -->
@@ -32,14 +34,26 @@
                 {{> food}}
               {{/each}}
             {{/each}}
+
+            {{#if addingNewFood}}
+              <button type="button" class="btn btn-default food-item">
+                {{> mealFormAddFood}}
+              </button>
+            {{else}}
+              <button type="button" class="btn btn-default food-item" id="add-food">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </button>
+            {{/if}}
           </div>
+
         </ul>
       </div>
     </div>
-    {{#if currentUser}}
-      <form class="new-food">
-        <input type="text" name="text" placeholder="Type to add more food"
-         autocomplete="off"/>
-      </form>
-    {{/if}}
+</template>
+
+<template name="mealFormAddFood">
+  <form class="add-food-form">
+    <input class="add-food-input" type="text" name="text" value="{{text}}"
+     autocomplete="off"/>
+  </form>
 </template>

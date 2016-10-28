@@ -2,35 +2,31 @@
 
   {{#if isNotEditable}}
 
-    <button type="button" class="btn btn-default food-item remove-food
-     {{#if beingRemoved}}{{else}}in-basket{{/if}}">
-        {{text}}
+    <button type="button" class="btn btn-default food-item
+     {{#if editingMeal}}remove-food{{/if}} {{#if beingRemoved}}{{else}}in-basket{{/if}}">
+      {{text}}
 
-        {{#if inMeal}}
-          {{#if editingMeal}}
-            {{#if beingRemoved}}{{else}}
-              <span class="glyphicon glyphicon-minus glyph-button" aria-hidden="true"></span>
-            {{/if}}
-            {{else}}
+      {{#if inMeal}}
+        {{#if editingMeal}}
+          {{#if beingRemoved}}{{else}}
+            <span class="glyphicon glyphicon-minus glyph-button" aria-hidden="true"></span>
           {{/if}}
+        {{else}}
         {{/if}}
+      {{/if}}
     </button>
 
-    {{else}}
+  {{else}}
 
       {{#HammerTouchArea gestureMap=foodGestures}}
-
-      <button type="button" class="btn btn-default food-item
-        {{#if isEaten}}food-is-eaten{{/if}} toggle-eaten">
-
-        {{#if isEditing}}
-          {{> foodEdit}}
-        {{else}}
-          {{text}}
-        {{/if}}
-
-      </button>
-
+        <button type="button" class="btn btn-default food-item
+         {{#if isEaten}}food-is-eaten{{/if}} toggle-eaten">
+          {{#if isEditing}}
+            {{> foodEdit}}
+          {{else}}
+            {{text}}
+          {{/if}}
+        </button>
       {{/HammerTouchArea}}
 
   {{/if}}
@@ -38,7 +34,7 @@
 
 <template name="foodEdit">
   <form class="edit-food">
-      <input class="edit-food-input" type="text" name="text" value="{{text}}"
-       autocomplete="off"/>
-    </form>
+    <input class="edit-food-input" type="text" name="text" value="{{text}}"
+     autocomplete="off"/>
+  </form>
 </template>

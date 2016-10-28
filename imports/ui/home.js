@@ -19,24 +19,7 @@ Template.home.onCreated(function bodyOnCreated() {
     Meteor.subscribe('meals');
 });
 
-Template.home.helpers({
-});
-
 Template.home.events({
-    'submit .new-food'(event) {
-        // Prevent default browser form submit
-        event.preventDefault();
-
-        // Get value from form elemnt
-        const target = event.target;
-        const text = target.text.value;
-
-        // Insert a food into the collection
-        Meteor.call('foods.insert', text);
-
-        // Clear form
-        target.text.value = '';
-    },
     'click .add-meal'(event) {
         event.preventDefault();
         console.log("Go to add meals");

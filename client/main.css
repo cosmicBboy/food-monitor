@@ -133,7 +133,9 @@ form.new-food {
   width: 100%;
 }
 
-form.edit-food {
+form.edit-food,
+form.add-food-form,
+form.add-food-form input {
   padding: 0;
 }
 
@@ -344,6 +346,11 @@ button.submit-new-meal {
 
 button.submit-new-meal:focus {
   background-color: #25caa4;
+}
+
+button span.glyphicon {
+  padding: 0;
+  font-size: 12px;
 }
 
 .meal-list-container .meal .modify-button,
