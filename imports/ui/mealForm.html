@@ -35,6 +35,7 @@
               {{/each}}
             {{/each}}
 
+            {{#if currentUser}}
             {{#if addingNewFood}}
               <button type="button" class="btn btn-default food-item">
                 {{> mealFormAddFood}}
@@ -43,6 +44,7 @@
               <button type="button" class="btn btn-default food-item" id="add-food">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
               </button>
+            {{/if}}
             {{/if}}
           </div>
 
