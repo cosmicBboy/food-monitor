@@ -20,7 +20,8 @@
 
       {{#HammerTouchArea gestureMap=foodGestures}}
         <button type="button" class="btn btn-default food-item
-         {{#if isEaten}}food-is-eaten{{/if}} toggle-eaten">
+         {{#if isEaten}}food-is-eaten{{/if}}
+         {{#if currentUser}}toggle-eaten{{/if}}">
           {{#if isEditing}}
             {{> foodEdit}}
           {{else}}
