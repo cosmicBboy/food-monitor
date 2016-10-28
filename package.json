@@ -2,7 +2,10 @@
   "name": "food-monitor",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "mod-deploy": "modulus deploy -p poopmo --node-version 4",
+    "mod-restart": "modulus project -p poopmo restart",
+    "mod-logs": "modulus project -p poopmo logs"
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
