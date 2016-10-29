@@ -37,12 +37,15 @@
 
             {{#if currentUser}}
             {{#if addingNewFood}}
-              <button type="button" class="btn btn-default food-item">
+              <div class="btn-group food-item" role="group">
+                <button type="button" class="btn btn-default" id="add-food-stop">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </button>
                 {{> mealFormAddFood}}
-              </button>
+              </div>
             {{else}}
               <button type="button" class="btn btn-default food-item" id="add-food">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-plus"></span>
               </button>
             {{/if}}
             {{/if}}
@@ -54,8 +57,9 @@
 </template>
 
 <template name="mealFormAddFood">
-  <form class="add-food-form">
-    <input class="add-food-input" type="text" name="text" value="{{text}}"
-     autocomplete="off"/>
-  </form>
+  <button type="button" class="btn btn-default {{#if addingNewFood}}show-input-form{{else}}hide-input-form{{/if}}">
+    <form class="add-food-form">
+      <input class="add-food-input" type="text" name="text" autocomplete="off"/>
+    </form>
+  </button>
 </template>

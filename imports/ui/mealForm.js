@@ -76,24 +76,37 @@ Template.mealForm.events({
   "click #add-food" (event, instance) {
     Session.set("addingNewFood", true);
   },
+  "click #add-food-stop" (event, instance) {
+    Session.set("addingNewFood", false);
+  },
   "submit .add-food-form" (event, instance) {
     event.preventDefault();
-    const text = event.target.text.value;
+    const target = event.target;
+    const text = target.text.value;
     if (text.length === 0) {
       // TODO: Add notification here
       console.log("You have to type something!");
     } else {
-      Meteor.call('foods.insert', text);  
+      Meteor.call("foods.insert", text);
+      target.text.value = "";
     }
-    Session.set('addingNewFood', false);
   },
   "focus .add-food-input" (event, instance) {
     instance.$(".add-food-input")
       .keyup(resizeInput)
       .each(resizeInput);
+  },
+  "blur .add-food-input" () {
+    Session.set("addingNewFood", false);
   }
 });
 
 Template.mealFormAddFood.onRendered(function() {
   this.$('.add-food-input').focus();
 });
+
+Template.mealFormAddFood.helpers({
+  addingNewFood() {
+    return !!Session.get("addingNewFood");
+  }
+})

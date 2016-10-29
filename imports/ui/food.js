@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
 import { Session } from 'meteor/session';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -31,11 +32,7 @@ Template.food.helpers({
     }
   },
   isEditing() {
-    if (Session.equals('foodEditing', this._id)) {
-      return true;
-    } else {
-      return false;
-    }
+    return Session.equals('foodEditing', this._id);
   },
   isNotEditable() {
     return (!Template.currentData().inBasket && 
@@ -116,7 +113,7 @@ Template.food.events({
       console.log("Client: text", text);
       Meteor.call('foods.edit', instance.data._id, text)
     }
-    Session.set('foodEditing', null)
+    Session.set('foodEditing', null);
   },
   'focus .edit-food-input'(event, instance) {
     instance.$(".edit-food-input")
@@ -126,5 +123,23 @@ Template.food.events({
 });
 
 Template.foodEdit.onRendered(function() {
-  this.$('.edit-food-input').focus();
+  const foodId = Template.currentData()._id;
+  const instance = Template.instance();
+  // console.log("THAT", that);
+  Tracker.autorun(function() {
+    if (Session.equals('foodEditing', foodId)) {
+      console.log("FOCUS ON THIS:", "#" + foodId);
+      console.log(instance.find("#" + foodId));
+      instance.find("#" + foodId).focus();
+    }
+  });
 });
+
+Template.foodEdit.helpers({
+  foodId() {
+    return Template.currentData()._id;
+  },
+  isEditing() {
+    return Session.equals('foodEditing', this._id);
+  }
+})
