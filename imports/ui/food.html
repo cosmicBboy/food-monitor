@@ -19,16 +19,15 @@
   {{else}}
 
       {{#HammerTouchArea gestureMap=foodGestures}}
-      <div class="btn-group food-item" role="group">
-      {{#if isEditing}}
-        {{> foodEdit}}
-      {{else}}
+      <div class="btn-group food-item single-food-item" role="group">
+      {{#unless isEditing}}
         <button type="button" class="btn btn-default
          {{#if isEaten}}food-is-eaten{{/if}}
          {{#if currentUser}}toggle-eaten{{/if}}">
           {{text}}
         </button>
-      {{/if}}
+      {{/unless}}
+      {{> foodEdit}}
       </div>
       {{/HammerTouchArea}}
 
@@ -36,10 +35,11 @@
 </template>
 
 <template name="foodEdit">
-  <button type="button" class="btn btn-default {{#if isEditing}}show-input-form{{else}}hide-input-form{{/if}}">
+  <button type="button" class="btn btn-default
+   {{#if isEditing}}show-input-form{{else}}hide-input-form{{/if}}">
     <form class="edit-food">
       <input class="edit-food-input" type="text" name="text" value="{{text}}"
-       id="{{foodId}}" autocomplete="off"/>
+       id="{{foodId}}" autocomplete="off" size=2/>
     </form>
   </button>
 </template>

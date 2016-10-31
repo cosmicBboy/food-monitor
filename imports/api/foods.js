@@ -36,12 +36,7 @@ if (Meteor.isServer) {
     // This code only runs on the server
     // Only publish tasks that are public or belong to the current user
     Meteor.publish('foods', function foodsPublication() {
-        return Foods.find({
-            $or: [
-                { private: { $ne: true} },
-                { owner: this.userId },
-            ],
-        });
+        return Foods.find({ owner: this.userId });
     });
 }
 

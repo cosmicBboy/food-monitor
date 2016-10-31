@@ -11,7 +11,7 @@ import "./mealForm.html";
 function resizeInput() {
   let inputLength = $(this).val().length;
   if (inputLength == 0) {
-    inputLength = 1
+    inputLength = 2
   }
   // padding of 1
   $(this).attr('size', inputLength + 1);
@@ -20,6 +20,8 @@ function resizeInput() {
 Template.mealForm.onCreated(function bodyOnCreated() {
   Session.set("foodsEaten", []);
   Session.set("foodEditing", null);
+  Session.set("addingNewFood", false);
+  Session.set("mealType", null);
   Meteor.subscribe("meals");
   Meteor.subscribe("foods");
 });
@@ -61,17 +63,22 @@ Template.mealForm.events({
   "click .meal-type-input" (event, instance) {
     event.preventDefault();
     const mealType = event.target.id;
+    const sessionMealType = Session.get("mealType");
     // add active class to only the meal input type
     // that matches the currect click event id value
     instance.$(".meal-type-input").each(function(index) {
-      let $mealType = $(this);
-      if ($mealType.attr("id") === mealType) {
+      let $mealType = $(this),
+          elemType = $mealType.attr("id");
+      if (elemType === mealType && elemType !== sessionMealType) {
         $mealType.addClass("active");
+        Session.set("mealType", mealType);
+      } else if (elemType === mealType && elemType === sessionMealType) {
+        $mealType.removeClass("active");
+        Session.set("mealType", null);
       } else {
         $mealType.removeClass("active");
       }
     });
-    Session.set("mealType", mealType);
   },
   "click #add-food" (event, instance) {
     Session.set("addingNewFood", true);
@@ -102,7 +109,16 @@ Template.mealForm.events({
 });
 
 Template.mealFormAddFood.onRendered(function() {
-  this.$('.add-food-input').focus();
+  const instance = Template.instance();
+
+  this.autorun(function() {
+    if (Session.get("addingNewFood")) {
+      console.log("FOCUS ON THIS");
+      Meteor.setTimeout(function() {
+        instance.$(".add-food-input").focus();
+      }, 50);
+    }
+  });
 });
 
 Template.mealFormAddFood.helpers({

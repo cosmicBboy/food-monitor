@@ -224,9 +224,9 @@ ul span {
 
 .meal-form-container,
 .food-form-container {
-  height: calc(100% - 70px);
-  padding-bottom: 20px;
+  height: calc(100% - 10px);
   overflow-y: scroll;
+  position: relative;
 }
 
 .meal-form-container button,
@@ -274,8 +274,9 @@ button.food-is-eaten:focus {
   margin: 0 5px 10px 5px;
 }
 
-.food-item.btn-group button {
+.single-food-item.btn-group button {
   font-size: 1em;
+  border-radius: 5px !important;
 }
 
 .meal-list-container .food-item.in-basket,
@@ -296,6 +297,9 @@ button.food-is-eaten:focus {
 }
 
 .meal-submit {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   padding: 0;
 }
 
@@ -313,8 +317,6 @@ li.meal-type {
   border-radius: 0;
 }
 
-.meal-type button:focus,
-.meal-type button:hover,
 .meal-type button.active {
   background-color: #b8e2d8;
 }

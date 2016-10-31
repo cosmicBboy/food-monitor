@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker';
 import { Session } from 'meteor/session';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -119,6 +118,9 @@ Template.food.events({
     instance.$(".edit-food-input")
       .keyup(resizeInput)
       .each(resizeInput);
+  },
+  'blur .edit-food-input'(event, instance) {
+    Session.set("foodEditing", null);
   }
 });
 
@@ -126,11 +128,12 @@ Template.foodEdit.onRendered(function() {
   const foodId = Template.currentData()._id;
   const instance = Template.instance();
   // console.log("THAT", that);
-  Tracker.autorun(function() {
+  this.autorun(function() {
     if (Session.equals('foodEditing', foodId)) {
       console.log("FOCUS ON THIS:", "#" + foodId);
-      console.log(instance.find("#" + foodId));
-      instance.find("#" + foodId).focus();
+      Meteor.setTimeout(function() {
+        instance.$("#" + foodId).focus();
+      }, 50)
     }
   });
 });
