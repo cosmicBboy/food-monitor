@@ -7,11 +7,19 @@ import '../../ui/about.html';
 import '../../ui/mealForm.html';
 import '../../ui/meals.html';
 import '../../ui/mealList.html';
+import '../../ui/signin.html';
 
 FlowRouter.route('/', {
     name: 'main',
     action() {
         FlowRouter.go("add-meal");
+    }
+});
+
+FlowRouter.route("/signin", {
+    name: "signin",
+    action() {
+        BlazeLayout.render('home', { main: 'signin' })
     }
 });
 

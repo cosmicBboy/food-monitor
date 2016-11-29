@@ -1,5 +1,21 @@
-import { Accounts } from 'meteor/accounts-base';
+import { AccountsTemplates } from 'meteor/useraccounts:core';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
-Accounts.ui.config({
-    passwordSignupFields: 'USERNAME_ONLY',
+AccountsTemplates.configure({
+  onSubmitHook: function() {
+    FlowRouter.go("/add-meal");
+  }
 });
+
+var pwd = AccountsTemplates.removeField('password');
+AccountsTemplates.removeField('email');
+AccountsTemplates.addFields([
+  {
+    _id: "username",
+    type: "text",
+    displayName: "username",
+    required: true,
+    minLength: 5,
+  },
+  pwd
+]);

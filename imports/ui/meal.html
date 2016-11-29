@@ -1,6 +1,7 @@
 <template name="meal">
   <li class='meal poopmo-panel'>
     <div>
+
       {{#if isEditable}}
         {{#if isEditing}}
         <button class="btn btn-default save-button modify-button pull-right">Save
@@ -11,16 +12,30 @@
         </button>
         {{/if}}
       {{/if}}
+
       <div class="meal-type">{{mealType}}</div>
       <div class="meal-date">{{createDate}}</div>
     </div>
+
     <div class="food-container">
+      {{#if isEditable}}
+        {{#if isEditing}}
+          <div class="edit-info-text">Click here to remove food items</div>
+        {{/if}}
+      {{/if}}
+
       {{#each foodItems}}
         {{> food}}
       {{/each}}
     </div>
 
     <div class="food-container edit-panel">
+      {{#if isEditable}}
+        {{#if isEditing}}
+          <div class="edit-info-text">Click here to add food items</div>
+        {{/if}}
+      {{/if}}
+
       {{#if addingFood}}
         {{#each myFoods}}
           {{> food}}

@@ -35,7 +35,7 @@ Template.home.events({
   'click .add-meal'(event) {
     event.preventDefault();
     console.log("Go to add meals");
-    FlowRouter.go('/');
+    FlowRouter.go('/add-meal');
   },
   'click .my-meals'(event) {
     event.preventDefault();
@@ -46,5 +46,10 @@ Template.home.events({
     event.preventDefault();
     console.log("Go to about");
     FlowRouter.go('/about');
+  },
+  'click .logout'(event) {
+    event.preventDefault();
+    Meteor.logout();
+    FlowRouter.go("signin");
   }
 });

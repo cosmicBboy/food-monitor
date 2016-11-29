@@ -1,8 +1,8 @@
 /* CSS declarations go here */
 body {
   font-family: sans-serif;
-  background-color: #79e5cc;
-  background-image: linear-gradient(to bottom, #79e5cc, #5d998b 100%);
+  /*background-color: #79e5cc;*/
+  /*background-image: linear-gradient(to bottom, #79e5cc, #5d998b 100%);*/
   background-attachment: fixed;
 
   position: absolute;
@@ -21,14 +21,12 @@ body {
   padding: 0;
   max-width: 600px;
   margin: 0 auto;
-  /*min-height: 100%;*/
-  height: calc(100% - 70px);
+  height: 100%;
   background: white;
 }
 
 #__blaze-root {
   height: 100%;
-  /*height: calc(100% - 70px);*/
 }
 
 .display {
@@ -36,14 +34,14 @@ body {
 }
 
 header {
+  height: 50px;
   background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
-  padding: 20px 15px 15px 15px;
+  /*padding: 20px 15px 15px 15px;*/
   position: relative;
 }
 
 main {
-  height: inherit;
+  height: calc(100% - 50px);
 }
 
 #login-buttons {
@@ -59,14 +57,14 @@ main {
 }
 
 div.nav-bar {
-  height: 70px;
+  height: 50px;
   width: 100%;
   max-width: 600px;
-  position: absolute;
+  /*position: absolute;*/
   bottom: 0;
   background: #d2edf4;
   background-image: linear-gradient(to bottom, #e1e5f0, #d0edf5, 100%);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
 }
 
 div.nav-bar .btn-group .btn-lg {
@@ -74,7 +72,7 @@ div.nav-bar .btn-group .btn-lg {
   height: 100%;
   border-radius: 0;
   background-color: transparent;
-  border-left: 1px solid #95beca;
+  /*border-left: 1px solid #95beca;*/
 }
 
 div.nav-bar .btn-group .btn-lg:focus {
@@ -95,9 +93,10 @@ span.glyph-button {
 h1 {
   font-size: 1.5em;
   margin: 0;
-  margin-bottom: 10px;
   display: inline-block;
   margin-right: 1em;
+  padding-left: 15px;
+  padding-top: 20px;
 }
 
 form {
@@ -212,20 +211,20 @@ ul span {
 }
 
 .meal-list-container {
-  height: 100%;
+  height: calc(100% - 50px);
   overflow-y: scroll;
-  padding-bottom: 50px;
 }
 
 .meal-form-container,
 .food-form-container {
-  height: calc(100% - 10px);
+  height: calc(100% - 50px);
   overflow-y: scroll;
   position: relative;
 }
 
 .meal-form-container button,
-.food-form-container button {
+.food-form-container button,
+header button.btn.btn-default {
   background-color: transparent;
   outline: 0 !important;
 }
@@ -281,6 +280,20 @@ button.food-is-eaten:focus {
   background-color: #e3eff2;
   border-color: #e3eff2;
   outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.meal-list-container .food-item.remove-food,
+.meal-list-container .food-item.remove-food:hover,
+.meal-list-container .food-item.remove-food:active {
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  transition: none;
 }
 
 .food-item.in-basket:focus {

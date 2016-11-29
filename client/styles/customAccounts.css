@@ -1,21 +1,3 @@
-#login-buttons a.login-link-text#login-name-link,
-#login-buttons a.login-close-text {
-  text-decoration: none;
-}
-
-#login-buttons .login-button {
-  background-color: #25caa4;
-  border: transparent;
-  color: #333;
-  margin-top: 10px;
-  padding: 10px;
-}
-
-#login-buttons .login-button:hover,
-#login-buttons .login-button:active {
-  background-color: #25caa4;
-}
-
-div#login-dropdown-list {
-  padding: 25px;
+div.at-pwd-form form {
+  background: #d2edf4;
 }

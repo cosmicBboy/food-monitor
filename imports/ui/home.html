@@ -1,13 +1,17 @@
 <template name="home">
     <div class='container'>
-        <header>
-            <h1>Poopmo</h1>
-            {{> loginButtons}}
-        </header>
+      <header>
+        <h1>Poopmo</h1>
+        {{#if currentUser}}
+          <button class="btn btn-default pull-right logout">
+            Logout
+          </button>
+        {{/if}}
+      </header>
 
-        <main>
-          {{ > Template.dynamic template=main }}
-          <!-- navbar -->
+      <main>
+        <!-- navbar -->
+        {{#if currentUser}}
           <div class="nav-bar btn-group btn-group-justified" role="group">
             <div class="btn-group" role="group">
               <button class="btn btn-lg first-btn add-meal
@@ -28,6 +32,9 @@
               </button>
             </div>
           </div>
-        </main>
+          {{> notifications}}
+        {{/if}}
+        {{ > Template.dynamic template=main }}
+      </main>
     </div>
 </template>

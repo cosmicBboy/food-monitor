@@ -5,15 +5,6 @@
     <button type="button" class="btn btn-default food-item
      {{#if editingMeal}}remove-food{{/if}} {{#if beingRemoved}}{{else}}in-basket{{/if}}">
       {{text}}
-
-      {{#if inMeal}}
-        {{#if editingMeal}}
-          {{#if beingRemoved}}{{else}}
-            <span class="glyphicon glyphicon-minus glyph-button" aria-hidden="true"></span>
-          {{/if}}
-        {{else}}
-        {{/if}}
-      {{/if}}
     </button>
 
   {{else}}

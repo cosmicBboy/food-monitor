@@ -24,6 +24,7 @@
           </li>
           {{/if}}
 
+          {{#if currentUser}}
           <div class="food-container">
             <p class="meal-prompt">I had</p>
             {{#each myFoodChunks}}
@@ -33,7 +34,6 @@
               {{/each}}
             {{/each}}
 
-            {{#if currentUser}}
               <div  role="group" class="btn-group food-item
                {{#unless addingNewFood}}single-food-item{{/unless}}">
                 {{#if addingNewFood}}
@@ -47,8 +47,8 @@
                 {{/if}}
                 {{> mealFormAddFood}}
               </div>
-            {{/if}}
           </div>
+          {{/if}}
 
         </ul>
 
@@ -56,7 +56,7 @@
 
       {{#if currentUser}}
       <div class="meal-submit text-center">
-        <button class="btn submit-new-meal">Record Meal</button>
+        <button class="btn submit-new-meal">Submit</button>
       </div>
       {{/if}}
     </div>

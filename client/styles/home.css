@@ -1,3 +1,8 @@
+header h1 {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
 .nav-bar .btn-group .btn.btn-lg {
     font-size: 1em;
 }
@@ -10,4 +15,20 @@
     font-size: 1.5em;
     text-align: center;
     color: #65858e;
+}
+
+header button.btn.btn-default {
+    margin-top: 15px;
+    margin-right: 10px;
+    background: #d2edf4;
+    border: none;
+}
+
+header button.btn.btn-default:active {
+    background: #b6d7e0;;
+}
+
+header button.btn.btn-default:hover,
+header button.btn.btn-default:active, {
+
 }

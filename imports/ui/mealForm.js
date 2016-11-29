@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { Session } from 'meteor/session';
 import { Template } from "meteor/templating";
+import { Notifications } from "meteor/gfk:notifications";
 import { _ } from "meteor/underscore";
 
 import { Foods } from "../api/foods.js";
@@ -15,6 +16,11 @@ function resizeInput() {
   }
   // padding of 1
   $(this).attr('size', inputLength + 1);
+};
+
+const notificationOpts = {
+  userCloseable: false,
+  timeout: 5000
 };
 
 Template.mealForm.onCreated(function bodyOnCreated() {
@@ -46,11 +52,15 @@ Template.mealForm.events({
     event.preventDefault();
     const foods = Session.get("foodsEaten");
     const mealType = Session.get("mealType");
+    var msg;
     // only call meals.insert if foods Array contains objects
-    if (foods.length === 0) {
-      console.log("You must check off at least one food!");
-    } else if (!mealType) {
-      console.log("You must select a meal type!");
+    if (!mealType) {
+      msg = "You must select what kind of meal you had: " +
+            "Breakfast, Lunch, Dinner, or a Snack";
+      Notifications.error("", msg, notificationOpts);
+    } else if (foods.length === 0) {
+      msg = "You must select at least one food!";
+      Notifications.error("", msg, notificationOpts);
     } else {
       Meteor.call("meals.insert", mealType, foods);
       // reset the form
