@@ -1,0 +1,16 @@
+.poopmo-panel {
+  border-top: 1px solid #f1f1f1;
+}
+
+.poopmo-panel .food-container {
+  padding: 10px 0;
+}
+
+.poopmo-panel .edit-button,
+.poopmo-panel .save-button {
+  border: transparent;
+}
+
+.poopmo-panel .edit-panel {
+  padding: 0;
+}

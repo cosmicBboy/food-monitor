@@ -50,20 +50,12 @@ main {
   display: block;
 }
 
-.about-btn {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  font-size: 25px;
-  color: #65858e;
-}
-
 .about-page h2 {
   font-weight: bold;
 }
 
 .about-page p {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 div.nav-bar {
@@ -117,7 +109,7 @@ form {
 form input {
   box-sizing: border-box;
   padding: 10px 0;
-  background: transparent;
+  background: white;
   border: none;
   width: 100%;
   padding-right: 80px;
@@ -168,7 +160,6 @@ li {
   position: relative;
   list-style: none;
   padding: 15px;
-  border-bottom: #eee solid 1px;
 }
 
 li .text {
@@ -204,8 +195,12 @@ ul span {
   overflow: scroll;
 }
 
-.form-title {
-  font-size: 18px;
+/*li.form-title {
+  background-color: #f1f1f1;
+}*/
+
+.form-title span {
+  font-size: 20px;
   font-weight: bold;
   padding: 0;
 }
@@ -262,7 +257,7 @@ button.food-is-eaten:focus {
 }
 
 .food-container {
-  padding: 20px 20px 0 20px;
+  padding: 20px;
 }
 
 .food-container .hammer-touch-area {
@@ -270,8 +265,8 @@ button.food-is-eaten:focus {
 }
 
 .food-item {
-  font-size: 1.1em;
-  margin: 0 5px 10px 5px;
+  font-size: 1em;
+  margin: 0 5px 10px 0;
 }
 
 .single-food-item.btn-group button {
@@ -299,26 +294,17 @@ button.food-is-eaten:focus {
 .meal-submit {
   position: absolute;
   width: 100%;
-  bottom: 0;
+  bottom: 20px;
   padding: 0;
+  margin-left: auto;
 }
 
 li.meal-type {
-  padding: 0;
-}
-
-.meal-type .btn-group .btn-group:not(:first-child) {
-    border-left: #dddddd solid 1px;
-}
-
-.meal-type button {
-  font-size: 1.1em;
-  height: 50px;
-  border-radius: 0;
+  padding: 20px 20px 10px 20px;
 }
 
 .meal-type button.active {
-  background-color: #b8e2d8;
+  background-color: #e3eff2;
 }
 
 .meal .meal-type {
@@ -346,8 +332,8 @@ li.meal-type {
 button.submit-new-meal {
   background-color: #25caa4;
   height: 50px;
-  width: 100%;
-  border-radius: 0;
+  width: 95%;
+  border-radius: 5px;
 }
 
 button.submit-new-meal:focus {
@@ -357,12 +343,6 @@ button.submit-new-meal:focus {
 button span.glyphicon {
   padding: 0;
   font-size: 12px;
-}
-
-.meal-list-container .meal .modify-button,
-.btn-group .modify-button {
-  margin: 0 5px 10px 5px;
-  border-radius: 70px;
 }
 
 .meal-list-container .meal .modify-button span {

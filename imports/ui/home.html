@@ -3,7 +3,6 @@
         <header>
             <h1>Poopmo</h1>
             {{> loginButtons}}
-            <span class="about-btn glyphicon glyphicon-info-sign" aria-hidden="true"></span>
         </header>
 
         <main>
@@ -11,13 +10,21 @@
           <!-- navbar -->
           <div class="nav-bar btn-group btn-group-justified" role="group">
             <div class="btn-group" role="group">
-              <button class="btn btn-lg first-btn add-meal">
+              <button class="btn btn-lg first-btn add-meal
+                             {{#if currentPageIsAddMeal}}active{{/if}}">
                 add meal
               </button>
             </div>
             <div class="btn-group" role="group">
-              <button class="btn btn-lg my-meals">
+              <button class="btn btn-lg my-meals
+                             {{#if currentPageIsMyMeals}}active{{/if}}">
                 my meals
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <button class="btn btn-lg about
+                             {{#if currentPageIsAbout}}active{{/if}}">
+                <span class="about-btn glyphicon glyphicon-info-sign" aria-hidden="true"></span>
               </button>
             </div>
           </div>

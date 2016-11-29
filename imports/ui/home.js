@@ -15,24 +15,36 @@ import './mealList.html';
 import './mealList.js';
 
 Template.home.onCreated(function bodyOnCreated() {
-    Meteor.subscribe('foods');
-    Meteor.subscribe('meals');
+  Meteor.subscribe('foods');
+  Meteor.subscribe('meals');
+});
+
+Template.home.helpers({
+  currentPageIsAddMeal() {
+    return FlowRouter.getRouteName() === "add-meal";
+  },
+  currentPageIsMyMeals() {
+    return FlowRouter.getRouteName() === "my-meals";
+  },
+  currentPageIsAbout() {
+    return FlowRouter.getRouteName() === "about";
+  }
 });
 
 Template.home.events({
-    'click .add-meal'(event) {
-        event.preventDefault();
-        console.log("Go to add meals");
-        FlowRouter.go('/');
-    },
-    'click .my-meals'(event) {
-        event.preventDefault();
-        console.log("Go to my meals");
-        FlowRouter.go('/my-meals');
-    },
-    'click .about-btn'(event) {
-        event.preventDefault();
-        console.log("Go to about");
-        FlowRouter.go('/about');
-    }
+  'click .add-meal'(event) {
+    event.preventDefault();
+    console.log("Go to add meals");
+    FlowRouter.go('/');
+  },
+  'click .my-meals'(event) {
+    event.preventDefault();
+    console.log("Go to my meals");
+    FlowRouter.go('/my-meals');
+  },
+  'click .about'(event) {
+    event.preventDefault();
+    console.log("Go to about");
+    FlowRouter.go('/about');
+  }
 });

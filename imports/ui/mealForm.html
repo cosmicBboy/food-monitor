@@ -6,7 +6,8 @@
           {{#if currentUser}}
           <!-- Input meal type -->
           <li class="meal-type">
-            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <p class="meal-prompt">For</p>
+            <div class="btn-group btn-group-justified" role="group">
               <div class="btn-group" role="group">
                 <button class="btn meal-type-input" id="breakfast">Breakfast</button>
               </div>
@@ -24,6 +25,7 @@
           {{/if}}
 
           <div class="food-container">
+            <p class="meal-prompt">I had</p>
             {{#each myFoodChunks}}
               <!-- each food chunk contains 4 food items -->
               {{#each .}}
@@ -32,7 +34,7 @@
             {{/each}}
 
             {{#if currentUser}}
-              <div  role="group" class="btn-group food-item 
+              <div  role="group" class="btn-group food-item
                {{#unless addingNewFood}}single-food-item{{/unless}}">
                 {{#if addingNewFood}}
                 <button type="button" class="btn btn-default" id="add-food-stop">
@@ -54,7 +56,7 @@
 
       {{#if currentUser}}
       <div class="meal-submit text-center">
-        <button class="btn submit-new-meal">Submit Meal</button>
+        <button class="btn submit-new-meal">Record Meal</button>
       </div>
       {{/if}}
     </div>
@@ -64,7 +66,8 @@
   <button type="button" class="btn btn-default {{#if addingNewFood}}show-input-form{{else}}hide-input-form{{/if}}">
     <form class="add-food-form">
       <!-- TODO: make input size attribute equal to text length -->
-      <input class="add-food-input" type="text" name="text" autocomplete="off" size=2/>
+      <input class="add-food-input" type="text" name="text" autocomplete="off" size=2
+       placeholder="..."/>
     </form>
   </button>
 </template>

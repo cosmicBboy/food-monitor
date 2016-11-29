@@ -1,0 +1,13 @@
+.nav-bar .btn-group .btn.btn-lg {
+    font-size: 1em;
+}
+
+.nav-bar .btn-group .btn.btn-lg.active {
+    background-color: #b6d7e0;
+}
+
+.nav-bar .btn-group button span.glyphicon {
+    font-size: 1.5em;
+    text-align: center;
+    color: #65858e;
+}
