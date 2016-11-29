@@ -6,10 +6,22 @@ ul.notifications {
   bottom: 80px;
   top: auto !important;
   right: auto !important;
+  background: transparent;
 }
 
 ul.notifications li {
   width: 95%;
+  border-radius: 5px;
+}
+
+li.notification.error {
+  background-color: #ffa7a3;
+  color: #906565;
+}
+
+li.notification.success {
+  background-color: #92f9d2;
+  color: #4b8e75;
 }
 
 @media (max-width: 500px) {
