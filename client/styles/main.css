@@ -30,7 +30,7 @@ body {
 }
 
 .about-page.display {
-  padding: 50px;
+  padding: 40px 50px;
   background: #b1d6e0;
   height: calc(100% - 50px);;
 }
@@ -55,6 +55,7 @@ main {
   font-size: 25px;
   font-weight: bold;
   color: #5c7277;
+  margin-top: 0;
   margin-bottom: 30px;
 }
 
@@ -140,7 +141,7 @@ form.add-food-form input {
 form.edit-food input {
   width: auto;
   padding: 0;
-  padding-left: 5px;
+  padding-left: 1px;
 }
 
 form input:focus{
@@ -220,6 +221,7 @@ ul span {
 .meal-list-container {
   height: calc(100% - 50px);
   overflow-y: scroll;
+  background: white;
 }
 
 .meal-form-container,

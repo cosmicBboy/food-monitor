@@ -13,8 +13,7 @@ function resizeInput() {
   if (inputLength == 0) {
     inputLength = 1
   }
-  // padding of 1
-  $(this).attr('size', inputLength + 1);
+  $(this).attr('size', inputLength);
 };
 
 Template.food.helpers({
@@ -34,7 +33,7 @@ Template.food.helpers({
     return Session.equals('foodEditing', this._id);
   },
   isNotEditable() {
-    return (!Template.currentData().inBasket && 
+    return (!Template.currentData().inBasket &&
             FlowRouter.getRouteName() === "my-meals");
   },
   inMeal() {
@@ -53,6 +52,9 @@ Template.food.helpers({
   foodGestures: {
     'press .food-item' (event, instance) {
       Session.set('foodEditing', instance.data._id)
+      instance.$(".edit-food-input")
+        .keyup(resizeInput)
+        .each(resizeInput);
     },
   }
 });
@@ -103,14 +105,16 @@ Template.food.events({
   },
   'submit .edit-food'(event, instance) {
     event.preventDefault();
-    const originalText = instance.data.text;
-    const text = event.target.text.value;
-
+    const originalText = instance.data.text,
+          text = event.target.text.value,
+          foodId = Template.currentData()._id;
     if (originalText == text) {
       console.log("Edited text is the same! Not making server call");
     } else {
       console.log("Client: text", text);
-      Meteor.call('foods.edit', instance.data._id, text)
+      Meteor.call('foods.edit', instance.data._id, text, function(err, res) {
+        instance.$("#" + foodId).blur();
+      })
     }
     Session.set('foodEditing', null);
   },
@@ -133,7 +137,7 @@ Template.foodEdit.onRendered(function() {
       console.log("FOCUS ON THIS:", "#" + foodId);
       Meteor.setTimeout(function() {
         instance.$("#" + foodId).focus();
-      }, 50)
+      }, 500)
     }
   });
 });
