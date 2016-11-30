@@ -127,7 +127,7 @@ Template.mealFormAddFood.onRendered(function() {
     if (Session.get("addingNewFood")) {
       Meteor.setTimeout(function() {
         instance.$(".add-food-input").focus();
-      }, 50);
+      }, 500);
     }
   });
 });
