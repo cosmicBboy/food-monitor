@@ -132,7 +132,7 @@ Template.foodEdit.onRendered(function() {
   const foodId = Template.currentData()._id;
   const instance = Template.instance();
   // console.log("THAT", that);
-  this.autorun(function() {
+  instance.autorun(function() {
     if (Session.equals('foodEditing', foodId)) {
       console.log("FOCUS ON THIS:", "#" + foodId);
       Meteor.setTimeout(function() {

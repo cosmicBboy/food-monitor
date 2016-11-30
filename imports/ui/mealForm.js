@@ -85,15 +85,11 @@ Template.mealForm.events({
       }
     });
   },
-  "click #open-add-form" (event, instance) {
+  "click #add-food" (event, instance) {
     Session.set("addingNewFood", true);
   },
   "click #add-food-stop" (event, instance) {
     Session.set("addingNewFood", false);
-  },
-  "click .submit-food" (event, instance) {
-    $(".add-food-input").focus();
-    $(".add-food-form").submit();
   },
   "submit .add-food-form" (event, instance) {
     event.preventDefault();
@@ -112,12 +108,9 @@ Template.mealForm.events({
       .keyup(resizeInput)
       .each(resizeInput);
   },
-  "blur .add-food-input" (event, instance) {
-    var relTarget = event.relatedTarget;
-    if (!relTarget) {
-      Session.set("addingNewFood", false);
-    }
-  },
+  "blur .add-food-input" () {
+    Session.set("addingNewFood", false);
+  }
 });
 
 Template.mealFormAddFood.onRendered(function() {
@@ -125,6 +118,7 @@ Template.mealFormAddFood.onRendered(function() {
 
   this.autorun(function() {
     if (Session.get("addingNewFood")) {
+      console.log("adding new food");
       Meteor.setTimeout(function() {
         instance.$(".add-food-input").focus();
       }, 500);
@@ -136,10 +130,4 @@ Template.mealFormAddFood.helpers({
   addingNewFood() {
     return !!Session.get("addingNewFood");
   }
-});
-
-Template.mealFormAddFood.events({
-  "click .submit-food" (event, instance) {
-    $(".add-food-form").submit();
-  },
 });
