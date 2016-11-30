@@ -3,6 +3,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Notifications } from "meteor/gfk:notifications";
+import { Session } from 'meteor/session';
 
 import { Foods } from '../api/foods.js';
 import { Meals } from '../api/foods.js';

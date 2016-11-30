@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import { Session } from 'meteor/session';
@@ -12,13 +13,20 @@ import '../../ui/signin.html';
 FlowRouter.route('/', {
     name: 'main',
     action() {
-        FlowRouter.go("add-meal");
+        if (!Meteor.userId()) {
+            FlowRouter.go("signin");
+        } else {
+            FlowRouter.go("add-meal");
+        }
     }
 });
 
 FlowRouter.route("/signin", {
     name: "signin",
     action() {
+        if (!!Meteor.userId()) {
+            FlowRouter.go("add-meal");
+        }
         BlazeLayout.render('home', { main: 'signin' })
     }
 });
@@ -26,6 +34,7 @@ FlowRouter.route("/signin", {
 FlowRouter.route('/add-meal', {
     name: 'add-meal',
     action() {
+        console.log(Meteor.userId());
         BlazeLayout.render('home', { main: 'meals' })
     }
 });
