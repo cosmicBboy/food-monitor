@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
+    "mobile": "meteor run --port=http://$(ipconfig getifaddr en0):3000 --mobile-server=http://$(ipconfig getifaddr en0):3000",
     "mod-deploy": "modulus deploy -p poopmo --node-version 4",
     "mod-restart": "modulus project -p poopmo restart",
     "mod-logs": "modulus project -p poopmo logs"
