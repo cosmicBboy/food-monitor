@@ -91,7 +91,11 @@ Template.home.events({
   },
   'click .logout'(event) {
     event.preventDefault();
-    Meteor.logout();
-    FlowRouter.go("signin");
+    Meteor.logout(function(error, result) {
+      if (error) {
+        throw new Meteor.Error(error);
+      }
+      FlowRouter.go("signin");
+    });
   }
 });

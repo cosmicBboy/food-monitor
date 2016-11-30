@@ -5,8 +5,8 @@
 
           {{#if currentUser}}
           <!-- Input meal type -->
+          <p class="meal-prompt">For</p>
           <li class="meal-type">
-            <p class="meal-prompt">For</p>
             <div class="btn-group btn-group-justified" role="group">
               <div class="btn-group" role="group">
                 <button class="btn meal-type-input" id="breakfast">Breakfast</button>
@@ -25,8 +25,8 @@
           {{/if}}
 
           {{#if currentUser}}
+          <p class="meal-prompt">I had</p>
           <div class="food-container">
-            <p class="meal-prompt">I had</p>
             {{#each myFoodChunks}}
               <!-- each food chunk contains 4 food items -->
               {{#each .}}
@@ -37,11 +37,11 @@
               <div  role="group" class="btn-group food-item
                {{#unless addingNewFood}}single-food-item{{/unless}}">
                 {{#if addingNewFood}}
-                <button type="button" class="btn btn-default" id="add-food-stop">
-                  <span class="glyphicon glyphicon-remove"></span>
+                <button type="button" class="btn btn-default submit-food" id="add-food">
+                  <span class="glyphicon glyphicon-plus"></span>
                 </button>
                 {{else}}
-                <button type="button" class="btn btn-default" id="add-food">
+                <button type="button" class="btn btn-default" id="open-add-form">
                   <span class="glyphicon glyphicon-plus"></span>
                 </button>
                 {{/if}}
@@ -63,7 +63,10 @@
 </template>
 
 <template name="mealFormAddFood">
-  <button type="button" class="btn btn-default {{#if addingNewFood}}show-input-form{{else}}hide-input-form{{/if}}">
+  <button type="button" id="add-food-form-button"
+          class="btn btn-default submit-food
+                {{#if addingNewFood}}show-input-form
+                {{else}}hide-input-form{{/if}}">
     <form class="add-food-form">
       <!-- TODO: make input size attribute equal to text length -->
       <input class="add-food-input" type="text" name="text" autocomplete="off" size=2

@@ -29,7 +29,7 @@ Template.mealForm.onCreated(function bodyOnCreated() {
 
 Template.mealForm.helpers({
   myFoodChunks() {
-    let foods = Foods.find({}).fetch();
+    let foods = Foods.find({}, {sort: {text: 1}}).fetch();
     let n = 4;
     let foodChunks = _.chain(foods).groupBy(function(element, index){
       return Math.floor(index/n);
@@ -85,11 +85,15 @@ Template.mealForm.events({
       }
     });
   },
-  "click #add-food" (event, instance) {
+  "click #open-add-form" (event, instance) {
     Session.set("addingNewFood", true);
   },
   "click #add-food-stop" (event, instance) {
     Session.set("addingNewFood", false);
+  },
+  "click .submit-food" (event, instance) {
+    $(".add-food-input").focus();
+    $(".add-food-form").submit();
   },
   "submit .add-food-form" (event, instance) {
     event.preventDefault();
@@ -108,9 +112,12 @@ Template.mealForm.events({
       .keyup(resizeInput)
       .each(resizeInput);
   },
-  "blur .add-food-input" () {
-    Session.set("addingNewFood", false);
-  }
+  "blur .add-food-input" (event, instance) {
+    var relTarget = event.relatedTarget;
+    if (!relTarget) {
+      Session.set("addingNewFood", false);
+    }
+  },
 });
 
 Template.mealFormAddFood.onRendered(function() {
@@ -118,7 +125,6 @@ Template.mealFormAddFood.onRendered(function() {
 
   this.autorun(function() {
     if (Session.get("addingNewFood")) {
-      console.log("FOCUS ON THIS");
       Meteor.setTimeout(function() {
         instance.$(".add-food-input").focus();
       }, 50);
@@ -130,4 +136,10 @@ Template.mealFormAddFood.helpers({
   addingNewFood() {
     return !!Session.get("addingNewFood");
   }
-})
+});
+
+Template.mealFormAddFood.events({
+  "click .submit-food" (event, instance) {
+    $(".add-food-form").submit();
+  },
+});

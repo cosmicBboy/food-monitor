@@ -9,6 +9,21 @@
 }
 
 .meal-prompt {
-  font-size: 24px;
+  margin: 20px 0 0 20px;
+  font-size: 18px;
   font-weight: bold;
+}
+
+.meal-form-container div.form {
+  height: calc(100% - 70px)
+}
+
+.meal-form-container div.form ul {
+  height: 100%;
+  /*overflow-y: scroll;*/
+}
+
+.meal-form-container div.form ul .food-container {
+  height: calc(100% - 150px);
+  overflow-y: scroll;
 }
