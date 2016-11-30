@@ -2,8 +2,11 @@ import { AccountsTemplates } from 'meteor/useraccounts:core';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 AccountsTemplates.configure({
+  confirmPassword: true,
   onSubmitHook: function() {
-    FlowRouter.go("/add-meal");
+    if (!!Meteor.userId()) {
+      FlowRouter.go("/add-meal");
+    }
   }
 });
 
@@ -19,3 +22,11 @@ AccountsTemplates.addFields([
   },
   pwd
 ]);
+
+AccountsTemplates.configure({
+  texts: {
+    errors: {
+      loginForbidden: "error.accounts.Incorrect username/password",
+    }
+  }
+});

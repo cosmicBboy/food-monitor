@@ -1,3 +1,16 @@
 div.at-pwd-form form {
-  background: #d2edf4;
+  background: transparent;
+}
+
+div.at-signup-link p {
+  text-align: center;
+}
+
+#at-btn {
+  background-color: #25caa4;
+}
+
+div.at-form {
+  margin-top: 0;
+  padding-top: 75px;
 }

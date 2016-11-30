@@ -18,7 +18,7 @@ import './mealList.js';
 
 const notificationOpts = {
   userCloseable: false,
-  timeout: 5000
+  timeout: 3000
 };
 
 export const notify = function(type, text) {

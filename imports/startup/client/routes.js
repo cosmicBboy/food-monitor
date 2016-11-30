@@ -34,8 +34,13 @@ FlowRouter.route("/signin", {
 FlowRouter.route('/add-meal', {
     name: 'add-meal',
     action() {
-        console.log(Meteor.userId());
-        BlazeLayout.render('home', { main: 'meals' })
+
+        if (!!Meteor.userId()) {
+            BlazeLayout.render('home', { main: 'meals' })
+        } else {
+            FlowRouter.go("signin");
+        }
+
     }
 });
 

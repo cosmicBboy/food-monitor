@@ -22,15 +22,17 @@ body {
   max-width: 600px;
   margin: 0 auto;
   height: 100%;
-  background: white;
+  background: #d2edf4;
 }
 
 #__blaze-root {
   height: 100%;
 }
 
-.display {
+.about-page.display {
   padding: 50px;
+  background: #b1d6e0;
+  height: calc(100% - 50px);;
 }
 
 header {
@@ -42,6 +44,7 @@ header {
 
 main {
   height: calc(100% - 50px);
+  /*background: white;*/
 }
 
 #login-buttons {
@@ -49,11 +52,15 @@ main {
 }
 
 .about-page h2 {
+  font-size: 25px;
   font-weight: bold;
+  color: #5c7277;
+  margin-bottom: 30px;
 }
 
 .about-page p {
-  font-size: 14px;
+  font-size: 16px;
+  color: #5c7277;
 }
 
 div.nav-bar {
@@ -220,6 +227,7 @@ ul span {
   height: calc(100% - 50px);
   overflow-y: scroll;
   position: relative;
+  background: white;
 }
 
 .meal-form-container button,
