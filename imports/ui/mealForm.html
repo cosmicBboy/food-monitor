@@ -64,9 +64,7 @@
 
 <template name="mealFormAddFood">
   <button type="button" id="add-food-form-button"
-          class="btn btn-default submit-food
-                {{#if addingNewFood}}show-input-form
-                {{else}}hide-input-form{{/if}}">
+          class="btn btn-default submit-food {{#if addingNewFood}}show-input-form{{else}}hide-input-form{{/if}}">
     <form class="add-food-form">
       <!-- TODO: make input size attribute equal to text length -->
       <input class="add-food-input" type="text" name="text" autocomplete="off" size=2
