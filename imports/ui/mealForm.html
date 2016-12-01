@@ -5,7 +5,7 @@
 
           {{#if currentUser}}
           <!-- Input meal type -->
-          <p class="meal-prompt">For</p>
+          <div class="meal-prompt">For</div>
           <li class="meal-type">
             <div class="btn-group btn-group-justified" role="group">
               <div class="btn-group" role="group">
@@ -25,7 +25,10 @@
           {{/if}}
 
           {{#if currentUser}}
-          <p class="meal-prompt">I had</p>
+          <div class="meal-prompt">
+            <label>I had</label>
+            <div>{{> mealFormAddFood}}</div>
+          </div>
           <div class="food-container">
             {{#each myFoodChunks}}
               <!-- each food chunk contains 4 food items -->
@@ -33,20 +36,6 @@
                 {{> food}}
               {{/each}}
             {{/each}}
-
-              <div  role="group" class="btn-group food-item
-               {{#unless addingNewFood}}single-food-item{{/unless}}">
-                {{#if addingNewFood}}
-                <button type="button" class="btn btn-default" id="add-food-stop">
-                  <span class="glyphicon glyphicon-remove"></span>
-                </button>
-                {{else}}
-                <button type="button" class="btn btn-default" id="add-food">
-                  <span class="glyphicon glyphicon-plus"></span>
-                </button>
-                {{/if}}
-                {{> mealFormAddFood}}
-              </div>
           </div>
           {{/if}}
 
@@ -63,12 +52,9 @@
 </template>
 
 <template name="mealFormAddFood">
-  <button type="button" id="add-food-form-button"
-          class="btn btn-default submit-food {{#if addingNewFood}}show-input-form{{else}}hide-input-form{{/if}}">
-    <form class="add-food-form">
-      <!-- TODO: make input size attribute equal to text length -->
-      <input class="add-food-input" type="text" name="text" autocomplete="off" size=2
-       placeholder="..."/>
-    </form>
-  </button>
+  <form class="add-food-form">
+    <!-- TODO: make input size attribute equal to text length -->
+    <input class="add-food-input" type="text" name="text" autocomplete="off" size=20
+     placeholder=" + add new food" autocapitalize="off"/>
+  </form>
 </template>

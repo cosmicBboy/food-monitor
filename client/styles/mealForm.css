@@ -9,13 +9,24 @@
 }
 
 .meal-prompt {
+  height: 40px;
   margin: 20px 0 0 20px;
   font-size: 18px;
   font-weight: bold;
 }
 
+.meal-prompt * {
+  padding: 0;
+  float: left;
+}
+
+.meal-prompt input {
+  font-weight: normal;
+  margin: 0 10px;
+}
+
 .meal-form-container div.form {
-  height: calc(100% - 70px)
+  height: calc(100% - 100px)
 }
 
 .meal-form-container div.form ul {
@@ -24,6 +35,12 @@
 }
 
 .meal-form-container div.form ul .food-container {
-  height: calc(100% - 150px);
+  height: calc(100% - 160px);
   overflow-y: scroll;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 20px;
+  margin-right: 20px;
 }

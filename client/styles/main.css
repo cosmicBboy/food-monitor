@@ -108,7 +108,8 @@ h1 {
 }
 
 form {
-  background: #f0f8ff;
+  background: white;
+  /*background: #f0f8ff;*/
   padding: 15px;
   position: relative;
 }
@@ -133,8 +134,7 @@ form.new-food {
 }
 
 form.edit-food,
-form.add-food-form,
-form.add-food-form input {
+form.add-food-form {
   padding: 0;
 }
 
@@ -266,7 +266,7 @@ button.food-is-eaten:focus {
 }
 
 .food-container {
-  padding: 10px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
 }
 
 .food-container .hammer-touch-area {
@@ -317,13 +317,13 @@ button.food-is-eaten:focus {
 .meal-submit {
   position: absolute;
   width: 100%;
-  bottom: 20px;
+  bottom: 15px;
   padding: 0;
   margin-left: auto;
 }
 
 li.meal-type {
-  padding: 10px 20px 0 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .meal-type button.active {

@@ -49,12 +49,13 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        Foods.insert({
+        var foodId = Foods.insert({
             text,
             createdAt: new Date(),
             owner: this.userId,
             username: Meteor.users.findOne(this.userId).username,
         });
+        return foodId;
     },
     'foods.remove'(foodId) {
         check(foodId, String);

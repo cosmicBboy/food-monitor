@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { AccountsTemplates } from 'meteor/useraccounts:core';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
@@ -6,6 +7,11 @@ AccountsTemplates.configure({
   onSubmitHook: function() {
     if (!!Meteor.userId()) {
       FlowRouter.go("/add-meal");
+    }
+  },
+  texts: {
+    errors: {
+      loginForbidden: "error.accounts.Incorrect username/password",
     }
   }
 });
@@ -22,11 +28,3 @@ AccountsTemplates.addFields([
   },
   pwd
 ]);
-
-AccountsTemplates.configure({
-  texts: {
-    errors: {
-      loginForbidden: "error.accounts.Incorrect username/password",
-    }
-  }
-});

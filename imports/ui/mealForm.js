@@ -11,8 +11,8 @@ import "./mealForm.html";
 
 function resizeInput() {
   let inputLength = $(this).val().length;
-  if (inputLength == 0) {
-    inputLength = 2
+  if (inputLength < 20) {
+    inputLength = 20
   }
   // padding of 1
   $(this).attr('size', inputLength + 1);
@@ -21,7 +21,6 @@ function resizeInput() {
 Template.mealForm.onCreated(function bodyOnCreated() {
   Session.set("foodsEaten", []);
   Session.set("foodEditing", null);
-  Session.set("addingNewFood", false);
   Session.set("mealType", null);
   Meteor.subscribe("meals");
   Meteor.subscribe("foods");
@@ -37,9 +36,6 @@ Template.mealForm.helpers({
     console.log("Food chunks", foodChunks);
     return foodChunks;
   },
-  addingNewFood() {
-    return !!Session.get("addingNewFood");
-  }
 });
 
 Template.mealForm.events({
@@ -85,12 +81,6 @@ Template.mealForm.events({
       }
     });
   },
-  "click #add-food" (event, instance) {
-    Session.set("addingNewFood", true);
-  },
-  "click #add-food-stop" (event, instance) {
-    Session.set("addingNewFood", false);
-  },
   "submit .add-food-form" (event, instance) {
     event.preventDefault();
     const target = event.target;
@@ -99,7 +89,14 @@ Template.mealForm.events({
       // TODO: Add notification here
       console.log("You have to type something!");
     } else {
-      Meteor.call("foods.insert", text);
+      Meteor.call("foods.insert", text, function(error, result) {
+        if (error) {
+          throw new Meteor.Error(error);
+        }
+        let eaten = Session.get('foodsEaten');
+        eaten.push(result);
+        Session.set('foodsEaten', eaten);
+      });
       target.text.value = "";
     }
   },
@@ -108,26 +105,10 @@ Template.mealForm.events({
       .keyup(resizeInput)
       .each(resizeInput);
   },
-  "blur .add-food-input" () {
-    Session.set("addingNewFood", false);
-  }
 });
 
-Template.mealFormAddFood.onRendered(function() {
-  const instance = Template.instance();
-
-  this.autorun(function() {
-    if (Session.get("addingNewFood")) {
-      console.log("adding new food");
-      Meteor.setTimeout(function() {
-        instance.$(".add-food-input").focus();
-      }, 500);
-    }
-  });
-});
-
-Template.mealFormAddFood.helpers({
-  addingNewFood() {
-    return !!Session.get("addingNewFood");
+Template.mealFormAddFood.events({
+  "keyup"(event) {
+    console.log("LOWER CASE!");
   }
 });
